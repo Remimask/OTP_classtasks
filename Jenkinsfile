@@ -48,11 +48,15 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                  script {
-                      docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS_ID) {
-                          docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
-                      }
-                  }
+                  withCredentials([usernamePassword(
+                              credentialsId: 'docker_hub',
+                              usernameVariable: 'DOCKER_USER',
+                              passwordVariable: 'DOCKER_PASS'
+                          )]) {
+                              bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS%'
+                              bat 'docker push remima/otp-class-tasks:latest'
+                              bat 'docker logout'
+                          }
             }
         }
     }
