@@ -3,7 +3,7 @@ pipeline {
     environment {
         PATH = "C:\\Users\\leenu\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
         DOCKERHUB_CREDENTIALS_ID = 'docker_hub'
-        DOCKERHUB_REPO = 'remima/OTP_classtasks'
+        DOCKERHUB_REPO = 'remima/otp-class-tasks'
         DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
