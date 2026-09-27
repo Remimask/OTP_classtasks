@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "${env.PATH};C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        PATH = "C:\\Users\\leenu\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
         DOCKERHUB_CREDENTIALS_ID = 'docker_hub'
         DOCKERHUB_REPO = 'remima/OTP_classtasks'
         DOCKER_IMAGE_TAG = 'latest'
@@ -53,7 +53,7 @@ pipeline {
                           docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
                       }
                   }
-        }
+            }
         }
     }
 }
