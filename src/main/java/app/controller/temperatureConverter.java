@@ -1,4 +1,4 @@
-package app;
+package app.controller;
 
 public class temperatureConverter {
     public temperatureConverter() {

@@ -60,7 +60,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.14</version>
+        <version>0.8.15</version>
         <executions>
           <execution>
             <goals>
@@ -68,8 +68,15 @@
             </goals>
           </execution>
           <execution>
+            <id>jacoco-site</id>
+           <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+          <execution>
             <id>report</id>
-            <phase>test</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
             </goals>
@@ -95,7 +102,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>app.temperatureConverter</mainClass>
+              <mainClass>app.controller.temperatureConverter</mainClass>
             </manifest>
           </archive>
         </configuration>
