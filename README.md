@@ -22,3 +22,6 @@ recording every conversion.
 1. Make sure that you have set up JDK-21, Maven, JavaFX, Jacoco and Jenkins
 2. Run mvn build
 3. Run program
+
+### DATABASE TRANSLATION REASONING
+Implementing a translation table seemed the most logical step to do. It was also implied in the class task, that it is the method that should be chosen.
