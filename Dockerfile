@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk
+FROM maven:3.9.9-eclipse-temurin-21
 
 WORKDIR /app
 
@@ -14,10 +14,12 @@ RUN mkdir -p /javafx-sdk \
     && mv /javafx-sdk/javafx-sdk-21/lib /javafx-sdk/lib \
     && rm -rf /javafx-sdk/javafx-sdk-21 javafx.zip
 
-COPY target/otp_classtasks.jar app.jar
+COPY pom.xml ./
+RUN mvn -q dependency:go-offline
+
+COPY src ./src
 
 ENV DISPLAY=host.docker.internal:0.0
-
 CMD ["java", \
      "--module-path", "/javafx-sdk/lib", \
      "--add-modules", "javafx.controls,javafx.fxml", \
