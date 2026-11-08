@@ -39,18 +39,27 @@ public class TempRecordDAO {
     }
 
     public static List<TempRecord> getAllConversions() throws SQLException {
-        String sql = "SELECT * FROM temperature_records ORDER BY converted_at DESC";
-        List<TempRecord> records = new ArrayList<TempRecord>();
+        return getLatestConversions(Integer.MAX_VALUE);
+    }
 
-        try (Connection connection = DB.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql); ResultSet resultSet = preparedStatement.executeQuery()) {
-            while (resultSet.next()) {
-                TempRecord tempRecord = new TempRecord();
-                tempRecord.setId(resultSet.getLong("id"));
-                tempRecord.setInputValue(resultSet.getDouble("input_value"));
-                tempRecord.setInputUnit(resultSet.getString("input_unit"));
-                tempRecord.setOutputValue(resultSet.getDouble("output_value"));
-                tempRecord.setOutputUnit(resultSet.getString("output_unit"));
-                records.add(tempRecord);
+    public static List<TempRecord> getLatestConversions(int limit) throws SQLException {
+        String sql = "SELECT * FROM temperature_records ORDER BY converted_at DESC LIMIT ?";
+        List<TempRecord> records = new ArrayList<>();
+
+        try (Connection connection = DB.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, limit);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    TempRecord tempRecord = new TempRecord();
+                    tempRecord.setId(resultSet.getLong("id"));
+                    tempRecord.setInputValue(resultSet.getDouble("input_value"));
+                    tempRecord.setInputUnit(resultSet.getString("input_unit"));
+                    tempRecord.setOutputValue(resultSet.getDouble("output_value"));
+                    tempRecord.setOutputUnit(resultSet.getString("output_unit"));
+                    records.add(tempRecord);
+                }
             }
         }
 

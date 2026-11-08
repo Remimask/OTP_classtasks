@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="485.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.controller">
+<AnchorPane fx:id="root" prefHeight="485.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.controller">
    <children>
       <GridPane alignment="CENTER" prefHeight="61.0" prefWidth="740.0">
         <columnConstraints>
@@ -23,15 +22,17 @@
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <RadioButton fx:id="english" mnemonicParsing="false" text="English" />
             <RadioButton fx:id="finnish" mnemonicParsing="false" text="Finnish" GridPane.columnIndex="1" />
             <RadioButton fx:id="swedish" mnemonicParsing="false" text="Sweidsh" GridPane.columnIndex="2" />
             <RadioButton fx:id="japanese" mnemonicParsing="false" text="Japanese" GridPane.columnIndex="3" />
+            <RadioButton fx:id="arabic" mnemonicParsing="false" text="Arabic" GridPane.columnIndex="4" />
          </children>
       </GridPane>
       <GridPane alignment="CENTER" hgap="10.0" layoutY="62.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="270.0" prefWidth="740.0" vgap="10.0">
@@ -140,6 +141,6 @@
             <Label fx:id="result4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <ScrollPane layoutY="332.0" prefHeight="154.0" prefWidth="740.0" />
+      <ScrollPane fx:id="history" layoutY="332.0" prefHeight="154.0" prefWidth="740.0" />
    </children>
 </AnchorPane>
